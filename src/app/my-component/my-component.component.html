@@ -3,8 +3,9 @@
 <br />
 ID est : {{id}}
 <br /><br />
+<input [(ngModel)] = "searchPokeName">
 <select [(ngModel)] = "selectedPokeId">
-    <option [value] = "poke.id" *ngFor="let poke of pokeList">{{poke.name}}</option>
+    <option [value] = "poke.id" *ngFor="let poke of pokeList | filterPokemonPipe : 'name':searchPokeName">{{poke.name}}</option>
 </select>
 <br />
 Selected is : {{selectedPokeId}}

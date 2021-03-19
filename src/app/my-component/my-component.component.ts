@@ -10,6 +10,7 @@ export class MyComponentComponent implements OnInit {
 
     id:string = '';
     selectedPokeId:string = '1';
+    searchPokeName:string='';
 
     pokeList : Pokemon[] = [];
 
