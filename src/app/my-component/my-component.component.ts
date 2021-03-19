@@ -10,7 +10,7 @@ import { PokeAPIServiceService as PokeAPIService} from '../poke-apiservice.servi
   providers: [PokeAPIService]
 })
 export class MyComponentComponent implements OnInit {
-
+//test
     id:string = '';
     selectedPokeId:string = '1';
     searchPokeName:string='';
