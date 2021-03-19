@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
+import { PokeDetail } from '../pokemon';
 import { PokeAPIServiceService as PokeAPIService} from '../poke-apiservice.service'
 
 @Component({
@@ -14,7 +15,8 @@ export class MyComponentComponent implements OnInit {
     selectedPokeId:string = '1';
     searchPokeName:string='';
 
-    pokeList : Pokemon[] = [];
+    pokeList: Pokemon[] = [];
+    pokeDetail: PokeDetail;
 
     constructor(private pokeService : PokeAPIService) {
     }
@@ -22,13 +24,15 @@ export class MyComponentComponent implements OnInit {
     ngOnInit(): void {
         this.pokeService.getPokemon().subscribe((data) => {
             data.results.forEach((e,index) => {
-                this.pokeList.push(new Pokemon(index, e.name));
+                this.pokeList.push(new Pokemon(String(index), e.name));
             })
         });
     }
 
     go() {
-        console.log(this.selectedPokeId);
+        if (this.selectedPokeId != ''){
+            this.pokeService.getPokemonInfo(this.selectedPokeId).subscribe((data) => this.pokeDetail = data);
+        }
     }
 
 }

@@ -11,3 +11,9 @@ ID est : {{id}}
 Selected is : {{selectedPokeId}}
 <br />
 <button (click)="go()" >Go</button>
+<br />
+<div *ngIf="pokeDetail">
+
+    <app-pokedetail [detail]="pokeDetail"></app-pokedetail>
+
+</div>
